@@ -97,3 +97,34 @@ body {
 .keys {
     padding-left: 1.4rem;
 }
+
+#canvas {
+    display: block;
+    margin: 0 auto;
+    outline: 1px solid black;
+    background-color: white;
+
+    /* width: 450px;
+    height: 300px; */
+}
+
+.canvas-container {
+    background-color: rgb(135, 167, 209);
+    margin: 0 auto;
+    width: 90vw;
+    height: 80vh;
+    padding-left: 1rem;
+}
+
+.gallery {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* grid-auto-rows: auto; */
+    grid-auto-flow: dense;
+}
+
+.gallery img {
+
+    width: 100%;
+    grid-column: span 1;
+    grid-row: span 1
+}

@@ -18,7 +18,7 @@
 
 
         <div class="navbar flex">
-            <button class="gallery">gallery</button>
+            <button class="galleryNav">gallery</button>
             <button class="memes">memes</button>
             <button class="about">about</button>
         </div>
@@ -48,10 +48,15 @@
     <section class="gallery grid">
 
 
+
     </section>
 
-    <section class="meme-editor grid hidden">
+    <section class="meme-editor hidden">
 
+        <input type="text" class="txt-input" onkeyup="onGetKey(this.value)">
+        <div class="canvas-container">
+            <canvas id="my-canvas" height="650" width="950"></canvas>
+        </div>
 
     </section>
 
@@ -67,6 +72,8 @@
         <button class="clear" onclick="openAboutModal()">about</button> -->
 
     <script src="/js/main.js"></script>
+    <script src="/js/meme.controller.js"></script>
+    <script src="/js/meme.service.js"></script>
 </body>
 
 </html>
