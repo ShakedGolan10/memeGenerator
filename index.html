@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Creator</title>
+    <link rel="stylesheet" href="/css/imgPageStyle.css">
+</head>
+
+<body onload="init()">
+    <div class="header flex">
+
+        <div>
+            <span class="logo">MEMEGEN</span>
+        </div>
+
+
+        <div class="navbar flex">
+            <button class="gallery">gallery</button>
+            <button class="memes">memes</button>
+            <button class="about">about</button>
+        </div>
+    </div>
+    <section class="search-img grid">
+
+        <input class="search" type="text" placeholder="Search">
+        <button class="upload">Upload</button>
+
+        <nav class="search-words flex justify-center align-center">
+            <span class="keys" data-trans="Funny" data-value="Funny" onclick="filterImg(this)"
+                style="font-size: 26px;">Funny</span>
+            <span class="keys" data-trans="Trump" data-value="Trump" onclick="filterImg(this)"
+                style="font-size: 18px;">Trump</span>
+            <span class="keys" data-trans="Celeb" data-value="Celeb" onclick="filterImg(this)"
+                style="font-size: 26px;">Celeb</span>
+            <span class="keys" data-trans="Politic" data-value="Politic" onclick="filterImg(this)"
+                style="font-size: 22px;">Politic</span>
+        </nav>
+        <button class="btn-gallery more" onclick="moreSearch()" data-trans="more">More</button>
+
+
+
+    </section>
+
+
+    <section class="gallery grid">
+
+
+    </section>
+
+    <section class="meme-editor grid hidden">
+
+
+    </section>
+
+
+
+
+    <!-- <button class="save" onclick="saveChanges()">Save</button>
+        <button class="clear" onclick="clearCanvas()">Clear</button>
+        <a onclick="downloadCanvas(this)" download="myimg.jpg">Download</a>
+        <button class="btn" onclick="onUploadImg()">
+            Upload Image from Canvas
+        </button>
+        <button class="clear" onclick="openAboutModal()">about</button> -->
+
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
