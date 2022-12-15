@@ -19,6 +19,9 @@ function initMeme(imgNum) {
 
 function init() {
     document.querySelector(`.meme-editor`).classList.add(`hidden`)
-    renderImgs()
+    document.querySelector(`.gallery`).classList.remove(`hidden`)
+    renderImgs('')
+    renderSearches()
+    // renderFilters()
 }
 

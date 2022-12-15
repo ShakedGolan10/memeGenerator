@@ -1,12 +1,52 @@
 'use strict'
 
 let gMemeTxt = ''
+let gCurrSerachPage = 0
+const PAGE_SIZE = 3
 
 function getMeme(key, idx) {
     if (key === `lines`) return gMeme[idx].lines
     if (key === `img`) return getImg(idx)
     if (key === `line`) return gMeme.selectedLineIdx
     if (key === `imgId`) return gMeme.selectedImgId
+}
+
+function getKeys() {
+    let startIdx = gCurrSerachPage * PAGE_SIZE
+    return gKeys.slice(startIdx, startIdx + PAGE_SIZE)
+
+}
+function onfilterImg(elSearchWord) {
+    console.log(elSearchWord)
+    renderImgs(elSearchWord)
+}
+
+function getImgs() {
+
+    return gImgs
+}
+function renderImgs(elSearchWord) {
+    let imgs = getImgs()
+    var imgsToDisplay = imgs.filter(img =>
+        img.keywords.find(key => key.includes(elSearchWord))
+    )
+
+    let srtHTMLs = imgsToDisplay.map(img => `
+    <img src=${img.url} onclick="initMeme(${img.id - 1})">
+    `)
+
+    document.querySelector('.gallery').innerHTML = srtHTMLs.join('')
+}
+
+function renderSearches() {
+    let keys = getKeys()
+    let strHTMLs = keys.map(key => `
+    <button class="keys" value="${key}" onclick="onfilterImg(this.value)"
+    style="font-size: 26px;">${key}</button>
+    `)
+
+    document.querySelector('.search-words').innerHTML = strHTMLs.join('')
+
 }
 
 
@@ -27,18 +67,17 @@ function renderMeme(imgNum) {
 }
 
 function getImg(imgNum) {
+    if (!imgNum) {
+        return gImgs.map(gImgs => gImgs.keywords)
+    }
     console.log(gImgs[imgNum].url)
     return gImgs[imgNum].url
+
 }
 
-function renderImgs() {
-    let imgs = getImgs()
-    let srtHTMLs = imgs.map(img => `
-    <img src=${img.url} onclick="initMeme(${img.id - 1})">
-    `)
 
-    document.querySelector('.gallery').innerHTML = srtHTMLs.join('')
-}
+
+
 
 
 

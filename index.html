@@ -18,7 +18,7 @@
 
 
         <div class="navbar flex">
-            <button class="galleryNav">gallery</button>
+            <button class="galleryNav" onclick="init()">gallery</button>
             <button class="memes">memes</button>
             <button class="about">about</button>
         </div>
@@ -29,14 +29,7 @@
         <button class="upload">Upload</button>
 
         <nav class="search-words flex justify-center align-center">
-            <span class="keys" data-trans="Funny" data-value="Funny" onclick="filterImg(this)"
-                style="font-size: 26px;">Funny</span>
-            <span class="keys" data-trans="Trump" data-value="Trump" onclick="filterImg(this)"
-                style="font-size: 18px;">Trump</span>
-            <span class="keys" data-trans="Celeb" data-value="Celeb" onclick="filterImg(this)"
-                style="font-size: 26px;">Celeb</span>
-            <span class="keys" data-trans="Politic" data-value="Politic" onclick="filterImg(this)"
-                style="font-size: 22px;">Politic</span>
+
         </nav>
         <button class="btn-gallery more" onclick="moreSearch()" data-trans="more">More</button>
 
@@ -45,7 +38,7 @@
     </section>
 
 
-    <section class="gallery grid">
+    <section class="gallery flex">
 
 
 
