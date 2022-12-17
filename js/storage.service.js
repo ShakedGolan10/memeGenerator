@@ -16,9 +16,6 @@ function loadFromStorage(key) {
     return JSON.parse(val)
 }
 
-function updateMemeName(name) {
-    gMeme.name = name
-}
 function saveMemeToStorage() {
 
     let name = prompt(`Choose a name for your Meme`)

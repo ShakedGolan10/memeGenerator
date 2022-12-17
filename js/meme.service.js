@@ -72,11 +72,16 @@ function updateMemeModelTxt(val) {
 
 
 }
+function updateMemeModal(savedMemeIdx) {
+    let galleryMemes = loadFromStorage(STORAGE_KEY)
 
+    gMeme = galleryMemes[savedMemeIdx]
+    console.log(`gMeme`, gMeme)
+}
 
-
-function initSavedMemeSection() {
-
+function deleteSavedMeme(memeNum) {
+    gMemes.splice(memeNum - 1, 1)
+    saveToStorage(STORAGE_KEY, gMemes)
 }
 
 function moreSearch() {
@@ -85,4 +90,79 @@ function moreSearch() {
         gCurrSerachPage = 0
     }
     renderSearches()
+}
+
+
+function getKeys() {
+    let startIdx = gCurrSerachPage * PAGE_SIZE
+    return gKeys.slice(startIdx, startIdx + PAGE_SIZE)
+
+}
+
+
+function getImgs() {
+    // resetgMeme()
+    let imgs = (loadFromStorage(STORAGE_KEY_IMGS)) ? loadFromStorage(STORAGE_KEY_IMGS) : gImgs
+
+    return imgs
+}
+
+
+function deleteLine() {
+    gMeme[`lines`].splice(gMeme.selectedLineIdx, 1)
+}
+
+
+function getImgUrl(imgNum) {
+    if (!imgNum) {
+        return gImgs.map(gImgs => gImgs.keywords)
+    }
+    return gImgs[imgNum - 1].url
+
+}
+
+function changeColor(color) {
+    gMeme.lines[getMeme(`line`)].color = color
+}
+
+
+function addLine() {
+    let diff = 100
+    gNewYOfLine += diff
+    let newLine = {
+        txt: ` `,
+        font: "50px ariel",
+        align: 'left',
+        color: 'black',
+        x: 200,
+        y: gNewYOfLine
+    }
+
+    if (gNewYOfLine > gElCanvas.height) gNewYOfLine = 150
+    gMeme[`lines`].push(newLine)
+
+}
+
+
+function changeLine() {
+
+    gMeme.selectedLineIdx++
+    if (gMeme[`lines`].length < gMeme.selectedLineIdx + 1) gMeme.selectedLineIdx = 0
+    updateTxtOnInput()
+}
+
+function changeFontSize(size) {
+    let textFont = gMeme.lines[gMeme.selectedLineIdx].font
+    let fontSize = textFont.substring(0, 2)
+    let newFontSize = fontSize
+    if (size.innerText === 'A+') fontSize++
+    else fontSize--
+    textFont = textFont.replace(newFontSize, fontSize)
+    gMeme.lines[gMeme.selectedLineIdx].font = textFont
+    renderMeme()
+}
+
+
+function updateMemeName(name) {
+    gMeme.name = name
 }
