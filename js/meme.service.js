@@ -26,46 +26,57 @@ let gImgs = [
     { id: 17, url: '/meme-imgs(square)/17.jpg', keywords: ['politician'] },
     { id: 18, url: '/meme-imgs(square)/18.jpg', keywords: ['toy-story'] }
 ];
+
+
+
 let gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
     lines: [
         {
-            txt: getMemeTxt(),
-            size: 20,
+            txt: ``,
+            font: "50px ariel",
             align: 'left',
-            color: 'red'
+            color: 'black',
+            x: 200,
+            y: 200
         }
-    ]
+    ],
+    name: ``
 }
 
-function getMemeTxt() {
-    return gMemeTxt
-}
-
-function updateMemeModelTxt() {
-    gMeme.lines[0].txt = getMemeTxt()
-}
-
-function updateMemeImgSelectedId(imgId) {
-    gMeme.selectedImgId = imgId
-}
-
-
-
-function createMeme(imgNum, drawTxt) {
+function resetgMeme() {
     gMeme = {
-        selectedImgId: imgNum,
+        selectedImgId: 1,
         selectedLineIdx: 0,
         lines: [
             {
-                txt: getMemeTxt(selectedLineIdx),
-                size: 20,
+                txt: ``,
+                font: "50px ariel",
                 align: 'left',
-                color: 'red'
+                color: 'black',
+                x: 200,
+                y: 200
             }
-        ]
+        ],
+        name: ``
     }
+    updateTxtOnInput()
+}
+
+function getMemeTxt() {
+    return gMeme.lines[getMeme(`line`)].txt
+}
+function updateMemeModelTxt(val) {
+    gMeme.lines[getMeme(`line`)].txt = val
+
+
+}
+
+
+
+function initSavedMemeSection() {
+
 }
 
 function moreSearch() {

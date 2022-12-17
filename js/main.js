@@ -3,25 +3,43 @@
 
 let gElCanvas
 let gCtx
+function updateMemeImgSelectedId(imgId) {
 
-function initMeme(imgNum) {
-    let imgId = getMeme(`imgId`)
-    updateMemeImgSelectedId(imgNum)
-    imgId = imgNum
-    console.log(gMeme.selectedImgId)
-    document.querySelector(`.meme-editor`).classList.remove(`hidden`)
-    document.querySelector(`.gallery`).classList.add(`hidden`)
-    gElCanvas = document.getElementById(`my-canvas`)
-    gCtx = gElCanvas.getContext(`2d`)
-    renderCanvas()
-    renderMeme(imgNum)
+    gMeme.selectedImgId = imgId
 }
 
 function init() {
-    document.querySelector(`.meme-editor`).classList.add(`hidden`)
-    document.querySelector(`.gallery`).classList.remove(`hidden`)
-    renderImgs('')
+    resetgMeme()
+    document.querySelector(`.meme-generator`).classList.add(`hidden`)
+    document.querySelector(`.main-screen`).classList.remove(`hidden`)
+    document.querySelector(`.saved-meme-gallery`).classList.add(`hidden`)
+
+    renderImgs(``)
     renderSearches()
     // renderFilters()
+}
+
+function initMeme(imgId) {
+    updateMemeImgSelectedId(imgId)
+
+    document.querySelector(`.meme-generator`).classList.remove(`hidden`)
+    document.querySelector(`.main-screen`).classList.add(`hidden`)
+    document.querySelector(`.saved-meme-gallery`).classList.add(`hidden`)
+
+    gElCanvas = document.getElementById(`my-canvas`)
+    gCtx = gElCanvas.getContext(`2d`)
+    renderCanvas()
+
+    renderMeme()
+}
+
+
+
+function initSavedMemes() {
+    document.querySelector(`.saved-meme-gallery`).classList.remove(`hidden`)
+    document.querySelector(`.meme-generator`).classList.add(`hidden`)
+    document.querySelector(`.main-screen`).classList.add(`hidden`)
+
+    renderSavedMemesGallery()
 }
 

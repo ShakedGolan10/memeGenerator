@@ -19,35 +19,70 @@
 
         <div class="navbar flex">
             <button class="galleryNav" onclick="init()">gallery</button>
-            <button class="memes">memes</button>
+            <button class="memes" onclick="initSavedMemes()">memes</button>
             <button class="about">about</button>
         </div>
     </div>
-    <section class="search-img grid">
+    <section class="main-screen">
 
-        <input class="search" type="text" placeholder="Search">
-        <button class="upload">Upload</button>
+        <section class="search-img grid">
 
-        <nav class="search-words flex justify-center align-center">
+            <input class="search" type="text" placeholder="Search" onkeyup="onfilterImg(this.value)">
+            <button><input type="file" class="file-input btn" name="image" onchange="onImgInput(event)"></button>
 
-        </nav>
-        <button class="btn-gallery more" onclick="moreSearch()" data-trans="more">More</button>
+            <nav class="search-words flex justify-center align-center">
 
+            </nav>
+            <button class="btn-gallery more" onclick="moreSearch()" data-trans="more">More</button>
+
+
+
+        </section>
+
+
+        <section class="gallery flex">
+
+
+
+        </section>
+    </section>
+
+    <section class="saved-meme-gallery hidden">
+        <h2>Choose from your saved Memes!</h2>
+        <button onclick="onDeleteSavedMeme()" title="Delete Meme" class="deleteMeme">Delete Saved
+            Meme!🚫</button>
+        <div class="saved-memes flex"></div>
 
 
     </section>
 
 
-    <section class="gallery flex">
+
+    <section class="meme-generator hidden flex">
+
+        <div class="meme-editor">
+            <h4>Put some words on the meme..</h4>
+            <input type="text" class="txt-input" onkeyup="onGetText(this.value)">
+            <div class="userPrefrences">
+                <button onclick="onAddLine()" title="add line">➕</button>
+                <button onclick="onDeleteLine()" title="delete line">❌</button>
+                <button onclick="onChangeFontSize(this)" title="increase-font">A+</button>
+                <button onclick="onChangeFontSize(this)" title="decrease-font">A-</button>
+                <button onclick="onChangeSelectedLine()" title="switch line">↪</button>
+                <button onclick="onMoveLine(this)" title="Move Line up">⬆</button>
+                <button onclick="onMoveLine(this)" title="Move Line down">⬇</button>
+                <button onclick="onMoveLine(this)" title="Move Line left">⬅</button>
+                <button onclick="onMoveLine(this)" title="Move Line right">➡</button>
 
 
 
-    </section>
+                <input type="color" onchange="onChangeColor(this.value)">
+                <a href="#" class="btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download as jpeg</a>
+                <button class="save-btn" onclick="saveMemeToStorage()">Save!</button>
 
-    <section class="meme-editor hidden">
-
-        <input type="text" class="txt-input" onkeyup="onGetKey(this.value)">
-        <div class="canvas-container">
+            </div>
+        </div>
+        <div class="canvas-container flex">
             <canvas id="my-canvas" height="650" width="950"></canvas>
         </div>
 
@@ -67,6 +102,8 @@
     <script src="/js/main.js"></script>
     <script src="/js/meme.controller.js"></script>
     <script src="/js/meme.service.js"></script>
+    <script src="/js/storage.service.js"></script>
+    <script src="/js/upload.service.js"></script>
 </body>
 
 </html>
