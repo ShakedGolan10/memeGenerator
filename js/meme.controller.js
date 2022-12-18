@@ -123,9 +123,10 @@ function renderImgs(elSearchWord) {
 
 function renderSearches() {
     let keys = getKeys()
+    console.log(keys)
     let strHTMLs = keys.map(key => `
-    <span class="keys" value="${key}" onclick="onfilterImg(this.value)"
-    style="font-size: 26px;">${key}</span>
+    <button class="keys btn" value="${key}" onclick="onfilterImg(this.value)"
+    style="font-size: 26px;">${key}</button>
     `)
 
     document.querySelector('.search-words').innerHTML = strHTMLs.join('')
