@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Creator</title>
-    <link rel="stylesheet" href="css/imgPageStyle.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body class="flex" onload="init()">
@@ -31,10 +31,10 @@
             <section class="search-img grid">
 
                 <input class="search" type="text" placeholder="Search" onkeyup="onfilterImg(this.value)">
-                <button class="btn-gallery"><input type="file" class="file-input btn" name="image"
+                <button class="btn upload"><input type="file" class="file-input btn" name="image"
                         onchange="onImgInput(event)"></button>
 
-                <nav class="search-words flex justify-center align-center">
+                <nav class="search-words flex align-center">
 
                 </nav>
                 <button class="btn-gallery more" onclick="moreSearch()" data-trans="more">More</button>
